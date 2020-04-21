@@ -1,0 +1,60 @@
+<app-menu></app-menu>
+
+
+<div class="container pt-5">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4"
+            src="https://media-exp1.licdn.com/dms/image/C4D0BAQGdhz3RqCOKHA/company-logo_200_200/0?e=2159024400&v=beta&t=Qzd_7PSrNg_lGu5CUDHhe35n3qHI13xoquPbIBVvIc0"
+            alt="" width="172">
+        <h2>Mentor Requests</h2>
+    </div>
+
+
+
+
+
+
+    <div class="col-md-10 order-md-1 mx-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Student</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Message</th>
+                                <th scope="col">Transcript</th>
+                                <th scope="col">Course</th>
+                                <th scope="col">Availibility</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let request of requests">
+                                <th scope="row">{{request.date | date:'short'}}</th>
+                                <td>{{request.name}} {{request.lastname}}</td>
+                                <td>{{request.email}}</td>
+                                <td>{{request.message}}</td>
+                                <td>{{request.transcript}}</td>
+                                <td>{{request?.course}}</td>
+                                <td>{{request.availibility}}
+                                    {{request.availibilityTime ? request?.availibilityTime : ''}}</td>
+                                <td>
+                                    <!-- <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button> -->
+                                    <button type="button" class="btn btn-success mr-2"
+                                        (click)="updateRequest(request._id, 'accepted')"><i
+                                            class="fas fa-check"></i></button>
+                                    <button type="button" class="btn btn-danger"
+                                        (click)="updateRequest(request._id, 'rejected')"><i
+                                            class="fas fa-ban"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<app-menu></app-menu>
+
+
+<div class="container pt-5">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4"
+            src="https://media-exp1.licdn.com/dms/image/C4D0BAQGdhz3RqCOKHA/company-logo_200_200/0?e=2159024400&v=beta&t=Qzd_7PSrNg_lGu5CUDHhe35n3qHI13xoquPbIBVvIc0"
+            alt="" width="172">
+        <h2>My Sessions</h2>
+    </div>
+
+
+
+
+
+
+    <div class="col-md-10 order-md-1 mx-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Mentor</th>
+                                <th scope="col">Course</th>
+                                <th scope="col">Availibility</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let session of sessions">
+                                <th scope="row">{{session.date | date:'short'}}</th>
+                                <td>{{session.email}}</td>
+                                <td>{{session?.course}}</td>
+                                <td>{{session.availibility}}
+                                    {{session.availibilityTime ? session?.availibilityTime : ''}}</td>
+                               
+                                <td>
+                                    <div class="row">
+
+                                        <div class="col-4">
+                                            <input type="number" #scoreInput min="0" max="5" value="5">
+                                        </div>
+                                        <!-- <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button> -->
+                                        <div class="col-3" >
+                                            <button type="button" class="btn btn-info btn-sm mr-2"
+                                                (click)="updateReview(session._id,scoreInput.value,session.course)"
+                                            ><i
+                                                    class="fas fa-star"></i></button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

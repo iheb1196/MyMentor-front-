@@ -1,0 +1,81 @@
+<app-menu></app-menu>
+
+
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="pt-5 text-center">
+                <img class="d-block mx-auto mb-4"
+                    src="https://media-exp1.licdn.com/dms/image/C4D0BAQGdhz3RqCOKHA/company-logo_200_200/0?e=2159024400&v=beta&t=Qzd_7PSrNg_lGu5CUDHhe35n3qHI13xoquPbIBVvIc0"
+                    alt="" width="172">
+                <h2>Mentors</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="row py-5">
+        <div class="col-md-8 col-lg-8 col-xl-7 mx-auto">
+            <form [formGroup]="formSearch">
+                <div class="form-row">
+                    <div class="col-12 col-md-9 mb-2 mb-md-0">
+                        <select class="form-control" id="course" formControlName="course">
+                            <option>Maths</option>
+                            <option>ISS</option>
+                            <option>Management</option>
+                            <option>Global Software</option>
+                            <option>Physics</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <button type="submit" class="btn btn-block btn-primary" (click)="search()">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-10 order-md-1 mx-auto">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Student</th>
+                                    <th scope="col">Availibility</th>
+                                    <th scope="col">Message</th>
+                                    <th scope="col">Course</th>
+                                    <th scope="col">Total reviews</th>
+                                    <th scope="col">Score</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let mentor of mentors">
+                                    <td>{{mentor?.user?.name}} {{mentor?.user?.lastname}}</td>
+                                    <td>{{mentor?.availibility}}</td>
+                                    <td>{{mentor?.message}}</td>
+                                    <td>{{mentor?.course}}</td>
+                                    <td>{{mentor?.user.reviews}}</td>
+                                    <td>{{mentor?.user.score}}</td>
+                                    <td>
+                                        <!-- <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button> -->
+                                        <button type="button" class="btn btn-success mr-2"
+                                            (click)="addUserRequest(mentor._id)"><i
+                                                class="fas fa-check"></i></button>
+                                        <!-- <button type="button" class="btn btn-danger"
+                                            (click)="updateRequest(request._id, 'rejected')"><i
+                                                class="fas fa-ban"></i></button> -->
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

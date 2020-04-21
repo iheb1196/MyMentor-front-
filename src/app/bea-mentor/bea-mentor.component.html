@@ -1,0 +1,104 @@
+<app-menu></app-menu>
+<div class="container pt-5">
+    <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4"
+            src="https://media-exp1.licdn.com/dms/image/C4D0BAQGdhz3RqCOKHA/company-logo_200_200/0?e=2159024400&v=beta&t=Qzd_7PSrNg_lGu5CUDHhe35n3qHI13xoquPbIBVvIc0"
+            alt="" width="172">
+        <h2>Be a Mentor</h2>
+    </div>
+
+
+
+
+
+
+    <div class="col-md-8 order-md-1 mx-auto">
+        <h4 class="mb-3">Fill the form</h4>
+        <div class="alert alert-warning d-block" *ngIf="msg"> {{msg}}</div>
+        <form class="needs-validation" [formGroup]="myForm" (ngSubmit)="addRequest()">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">First name</label>
+                    <input formControlName="name" type="text" disabled class="form-control" id="firstName"
+                        placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                        Valid first name is required.
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Last name</label>
+                    <input type="text" formControlName="lastname" disabled class="form-control" id="lastName"
+                        placeholder="" value="" required>
+                    <div class="invalid-feedback">
+                        Valid last name is required.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="email">Email </label>
+                <input type="email" class="form-control" formControlName="email" disabled id="email"
+                    placeholder="you@example.com">
+                <div class="invalid-feedback">
+                    Please enter a valid email address .
+                </div>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="Message">Message </label>
+                <input type="text" class="form-control" formControlName="message" id="Message"
+                    placeholder="additional notes">
+                <div class="invalid-feedback">
+                </div>
+            </div>
+
+            <div class="mb-3" *ngIf="apiService.user.role !== 'professor'">
+                <label for="professor"> Professor Email </label>
+                      <input type="text" list="professors" name="professors" class="form-control" formControlName="professorEmail" placeholder="Choose the course professor's"> 
+                           <datalist id="professors">
+               
+                                 <option *ngFor="let email of emails" value="{{email.email}}">{{email.email}} </option>
+                           </datalist>
+                
+            </div>
+
+
+            <div class="mb-3">
+                <label for="availibility">availibility</label>
+                <input type="date" formControlName="availibility" class="form-control" id="availibility">
+                <input type="time" formControlName="availibilityTime" class="form-control" id="availibility">
+
+            </div>
+
+            <div class="mb-3">
+                <label for="course">Course</label>
+                <input type="text" class="form-control"  formControlName="course" list="courses" name="courses">
+                  <datalist id="courses">
+                    <option>Maths</option>
+                    <option>ISS</option>
+                    <option>Management</option>
+                    <option>Global Software</option>
+                    <option>Physics</option>
+                </datalist>
+              
+            </div>
+
+
+            <div class="col-md-3 mb-3" *ngIf="apiService.user.role !== 'professor'">
+                <label for="Transcript">Transcript</label>
+                <input formControlName="transcript" type="file" class="form-control" id="Transcript" placeholder=""
+                    required>
+                <div class="invalid-feedback">
+
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn mb-4 btn-primary btn-lg btn-block" type="submit" > SUBMIT </button>
+
+            
+        </form>
+    </div>
+</div>
